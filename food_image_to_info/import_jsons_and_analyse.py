@@ -3,7 +3,7 @@ import json
 import matplotlib.pyplot as plt
 import numpy as np
 import plotly.graph_objects as go
-from aux_functions import list_files, import_json
+from aux_functions import list_files, import_json, singularize
 
 from collections import Counter 
 
@@ -45,7 +45,7 @@ def run():
         
         hash_list.extend([x.lower() for x in  d["hashtags"]])
         countries_list.extend([x.lower() for x in  d["countries"]])
-        ingredients_list.extend([x.lower() for x in  d["ingredients"] if 
+        ingredients_list.extend([singularize(x.lower()) for x in  d["ingredients"] if 
         (x not in ["salt", "Salt", "sugar", "Sugar", "water", "Water", "pepper", "Pepper", "oil", "Oil", "salt and pepper", "Salt and Pepper"])
         ])
     
@@ -53,9 +53,9 @@ def run():
     countries_counter = Counter(countries_list)
     ingredients_counter = Counter(ingredients_list)
            
-    plot_bar(hash_counter.most_common(10), "hash.png")
-    plot_bar(countries_counter.most_common(10), "countries.png")
-    plot_bar(ingredients_counter.most_common(10), "ingredients.png")
+    plot_bar(hash_counter.most_common(8), "hash.png")
+    plot_bar(countries_counter.most_common(8), "countries.png")
+    plot_bar(ingredients_counter.most_common(8), "ingredients.png")
 
 
 if __name__ == "__main__":
