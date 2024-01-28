@@ -2,7 +2,6 @@ import os
 import json
 import matplotlib.pyplot as plt
 import numpy as np
-import seaborn as sns
 import plotly.graph_objects as go
 
 
@@ -39,14 +38,6 @@ def plot_bar(list_of_tuples, name):
         heights = [d[1] for d in list_of_tuples]
 
         # # Create the bar chart.
-        # sns.barplot(x=names, y=heights)
-        # plt.xlabel("Name", fontsize=14)
-        # plt.ylabel("Number of mentions", fontsize=14)
-        # plt.xticks(rotation=45)
-        # plt.yticks(np.arange(0, max(heights) + 1, 1))
-        # plt.savefig(name)
-        # plt.clf()
-
         fig = go.Figure(data=[go.Bar(x=names, y=heights)])
         fig.update_layout(title=name, xaxis_title="Name", yaxis_title="mentions")
         #fig.show()

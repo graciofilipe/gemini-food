@@ -68,5 +68,5 @@ def turn_descriptions_into_json(description_file_path, extraction_prompt, config
 
   #write the corresponding json
   with open('jsons/' + description_file_path.split('/')[-1].split('.')[0] + '.json', 'w') as f:
-      f.write(response.text.strip("```").strip("json"))
+      f.write(response.text.strip("```").strip("json").strip("JSON"))
 

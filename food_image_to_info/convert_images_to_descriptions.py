@@ -1,4 +1,4 @@
-from vertexai.preview.generative_models import GenerativeModel, Part, Image
+#from vertexai.preview.generative_models import GenerativeModel, Part, Image
 from gemini_functions import generate_from_vision, convert_file_to_image, image_to_description
 import json
 import os
@@ -27,15 +27,21 @@ def run():
     
     list_of_files = list_files(folder_path)
 
-    for image in list_of_files:
-        print(image)
-        try:
-            response = image_to_description(
-                pre_prompt, image, post_prompt, config
-                )
-        except:
-            print("could not handle", image)
-            continue
+    for image_path in list_of_files:
+        print(image_path)
+        # import ipdb; ipdb.set_trace()
+        # check if corresponding description file already exists
+        description_path = 'descriptions/'+image_path.split('/')[1].split('.')[0] +'_description.txt'
+        if os.path.exists(description_path):
+            print("image already described")
+        else:
+            try:
+                response = image_to_description(
+                    pre_prompt, image_path, post_prompt, config
+                    )
+            except:
+                print("could not handle", image_path)
+                continue
 
 
 if __name__ == "__main__":
