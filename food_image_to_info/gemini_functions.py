@@ -31,9 +31,9 @@ def generate_from_vision(prompt, config={
 
 def image_to_description(pre_prompt, image_path, post_prompt, config):
   '''
-  pre_prompt: str
+  pre_prompt: str to be passed before the image
   image: str a string that points to image in png format
-  post_prompt: str
+  post_prompt: str to be passed after the image
   '''
   img = convert_file_to_image(image_path)
   content =[pre_prompt, img, post_prompt]
@@ -51,7 +51,9 @@ def image_to_description(pre_prompt, image_path, post_prompt, config):
 
 def turn_descriptions_into_json(description_file_path, extraction_prompt, config):
   '''
-  description_path: str
+  description_path: str a string that points to the description file
+  extraction_prompt: str the prompt that will be used to extract the json
+  config: dict
   '''
   model = GenerativeModel("gemini-pro")
 
