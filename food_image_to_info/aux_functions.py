@@ -1,5 +1,8 @@
 import os
+import json
 
+
+## list all files in a directory
 def list_files(directory):
     for entry in os.listdir(directory):
         full_path = os.path.join(directory, entry)

@@ -22,7 +22,7 @@ def plot_bar(list_of_tuples, file_name):
 
         # # Create the bar chart.
         fig = go.Figure(data=[go.Bar(x=names, y=heights)])
-        fig.update_layout(title=name, xaxis_title="Name", yaxis_title="mentions")
+        fig.update_layout(yaxis_title="mentions")
         fig.write_image(file_name)
 
 
@@ -45,15 +45,17 @@ def run():
         
         hash_list.extend([x.lower() for x in  d["hashtags"]])
         countries_list.extend([x.lower() for x in  d["countries"]])
-        ingredients_list.extend([x.lower() for x in  d["ingredients"] if (x!= "salt" and x!= "Salt")])
+        ingredients_list.extend([x.lower() for x in  d["ingredients"] if 
+        (x not in ["salt", "Salt", "sugar", "Sugar", "water", "Water", "pepper", "Pepper", "oil", "Oil", "salt and pepper", "Salt and Pepper"])
+        ])
     
     hash_counter = Counter(hash_list)
     countries_counter = Counter(countries_list)
     ingredients_counter = Counter(ingredients_list)
            
-    plot_bar(hash_counter.most_common(8), "hash.png")
-    plot_bar(countries_counter.most_common(8), "countries.png")
-    plot_bar(ingredients_counter.most_common(8), "ingredients.png")
+    plot_bar(hash_counter.most_common(10), "hash.png")
+    plot_bar(countries_counter.most_common(10), "countries.png")
+    plot_bar(ingredients_counter.most_common(10), "ingredients.png")
 
 
 if __name__ == "__main__":
