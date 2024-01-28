@@ -1,0 +1,4 @@
+#
+python convert_images_to_descriptions.py --pre_prompt="here is a photo of a dish I made: " --folder_path="images" --post_prompt=" can you tell me what's in it? Describe each ingredient you see in the image and that will be needed for the recipe. Name 3 countries this dish may be from. In addition create 5 hashtags for this dish that reflect its visual aspect and cuisine" --config='{"max_output_tokens": 2048, "temperature": 0.666,  "top_p": 0.666,  "top_k": 33}'
+python convert_descriptions_to_jsons.py --prompt="Take the following task and return a json file that has three keys 'ingredients', 'countries' and 'hashtags'. The values for those keys should be quoted from the text. Here is the text: " --folder_path="descriptions" --config='{"max_output_tokens": 2048, "temperature": 0.666,  "top_p": 0.666,  "top_k": 33}'
+

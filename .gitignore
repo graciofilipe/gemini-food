@@ -1,0 +1,8 @@
+generic/
+.venv/
+__pycache__/
+food_image_to_info/descriptions/*.txt
+food_image_to_info/images/*.jpg
+food_image_to_info/images/*.jpeg
+food_image_to_info/jsons/*.json
+food_image_to_info/*.png
